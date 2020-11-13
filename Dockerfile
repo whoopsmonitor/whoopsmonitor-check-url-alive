@@ -1,5 +1,5 @@
 FROM php:7.4.9-cli-alpine3.12
-LABEL maintainer="DevRel <devrel@mallgroup.com>"
+LABEL maintainer="Daniel Rataj <daniel.rataj@centrum.cz>"
 LABEL org.opencontainers.image.source="https://github.com/whoopsmonitor/whoopsmonitor-check-url-alive"
 
 LABEL com.whoopsmonitor.documentation="https://github.com/whoopsmonitor/whoopsmonitor-check-url-alive"
