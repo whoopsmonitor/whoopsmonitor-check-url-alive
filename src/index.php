@@ -1,5 +1,6 @@
 <?php
 $url = getenv('WM_ENDPOINT_URL');
+$bearerToken = getenv('WM_BEARER_TOKEN');
 
 $critical = [];
 $attempt = 0;
@@ -21,10 +22,16 @@ do {
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
   curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 
-  $headers = [
-    'User-Agent: whoopsmonitor-plugin-url-alive/0.0'
-  ];
+  $headers = [];
+
+  if ($bearerToken) {
+    $headers[] = 'Authorization: Bearer ' . $bearerToken;
+  }
+
+  $headers[] = 'User-Agent: whoopsmonitor-check-url-alive/0.0';
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
@@ -33,4 +40,5 @@ do {
 } while ($result === false);
 
 echo sprintf("URL is up: %s", $url);
+
 exit(0);

@@ -1,4 +1,4 @@
-FROM php:7.4.9-cli-alpine3.12
+FROM php:8.0.3-cli-alpine3.13
 LABEL maintainer="DevRel <devrel@mallgroup.com>"
 LABEL org.opencontainers.image.source="https://github.com/whoopsmonitor/whoopsmonitor-check-url-alive"
 
