@@ -36,6 +36,14 @@ do {
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
   $result = curl_exec($ch);
+
+  $info = curl_getinfo($ch);
+  $status = $info['http_code'];
+
+  if ((int)substr($status, 0, 1) !== 2) {
+    $result = false;
+  }
+
   curl_close($ch);
 } while ($result === false);
 
