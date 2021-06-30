@@ -4,6 +4,7 @@ This check check if specified URL responds with HTTP status 200.
 ## Environmental variables
 
  - `WM_ENDPOINT_URL` URL this visits.
+ - `WM_BEARER_TOKEN` Token to authentication.
 
 ## Example
 
